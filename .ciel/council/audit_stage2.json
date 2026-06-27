@@ -1,0 +1,49 @@
+{
+  "run_id": "council-audit-2026-06-27-001",
+  "scope": "specification_audit",
+  "stage": 2,
+  "anonymized": true,
+  "members": [
+    {
+      "member": "coherence",
+      "stage": 2,
+      "score": 7,
+      "rationale": "Peer scores validate my assessment. Member_D's bloat flag is fair — the duplication I noted (cross-references vs inline content) is a design choice for standalone readability but does create structural inconsistency: some specs are self-contained while others rely on companion research notes. Maintaining score at 7. The corpus is harmonious within each document category but the categories themselves have slightly different conventions (research = narrative; spec = prescriptive; arch = descriptive). This is acceptable given different purposes. No revision to my score.",
+      "delta_reason": null,
+      "challenge_of": []
+    },
+    {
+      "member": "capability",
+      "stage": 2,
+      "score": 9,
+      "rationale": "Peer assessment validates comprehensive coverage. Member_D raises bloat but that's not my concern. Member_C's note about missing CRL/OCSP is valid but appropriately deferred — this is a spec-stage document set and certificate revocation is an implementation detail that can be added to SECURITY_SPEC.md later. The RFC 9221 datagram gap I identified is minor — it's adequately covered within WEBTRANSPORT_SPEC.md Section 3.5 and the DART_API_SPEC.md QuicConnection.sendDatagram() API. Maintaining 9.",
+      "delta_reason": null,
+      "challenge_of": []
+    },
+    {
+      "member": "safety",
+      "stage": 2,
+      "score": 8,
+      "rationale": "Member_E's evolution flags ('catalyst', 'ecosystem_bridge') don't raise safety concerns — specification documents carry no execution risk. Member_D's efficiency concerns don't affect safety. The corpus correctly specifies that Random.secure() must be used everywhere, timing-safe comparison for tags, no key logging, amplification limits, and anti-replay mechanisms. The QPACK concern I raised is mitigated by SETTINGS_QPACK_MAX_TABLE_CAPACITY being configurable. Maintaining 8. No safety risks in a documentation-only repository.",
+      "delta_reason": null,
+      "challenge_of": [],
+      "veto": false
+    },
+    {
+      "member": "efficiency",
+      "stage": 2,
+      "score": 6,
+      "rationale": "Peers scored capability/evolution/safety high. My concern about duplication between research and spec layers is valid but Member_B correctly notes this is intentional for standalone readability. I'll maintain 6 rather than lower — the 15-20% trimmable content is a characteristic of archival specifications, not a defect. The ASCII art in DATA_FLOW.md is verbose but aids comprehension. The real efficiency gain would be a hierarchical summary/index document that lets readers navigate without reading all 7k lines. This could be added as a doc/INDEX.md.",
+      "delta_reason": null,
+      "challenge_of": []
+    },
+    {
+      "member": "evolution",
+      "stage": 2,
+      "score": 9,
+      "rationale": "Cross-review confirms the strategic value assessment. Member_A's coherence notes about format variance between research/spec/arch are valid but don't diminish evolutionary value — the three-tier structure (research → spec → arch) is itself an innovation worth replicating. Member_B's 9 validates capability coverage. The specification corpus positions dart_quic as the first serious pure-Dart networking protocol implementation, which has strategic implications for Flutter/Dart competitiveness in the networking stack space. Maintaining 9.",
+      "delta_reason": null,
+      "challenge_of": []
+    }
+  ]
+}

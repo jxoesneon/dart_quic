@@ -1,0 +1,43 @@
+{
+  "run_id": "council-audit-2026-06-27-002",
+  "scope": "specification_audit_round2",
+  "artifact": "doc/ — 25 documents post-Round-2 improvements",
+  "timestamp": "2026-06-27T13:38:00Z",
+  "stage": 3,
+  "verdict": "pass",
+  "weighted_score": 8.65,
+  "votes": {
+    "coherence": 8,
+    "capability": 9,
+    "safety": 9,
+    "efficiency": 8,
+    "evolution": 9
+  },
+  "weights_applied": {
+    "coherence": "0.20 * 8 = 1.60",
+    "capability": "0.20 * 9 = 1.80",
+    "safety": "0.25 * 9 = 2.25",
+    "efficiency": "0.15 * 8 = 1.20",
+    "evolution": "0.20 * 9 = 1.80"
+  },
+  "pass_conditions": {
+    "weighted_score_above_6.5": true,
+    "majority_above_6": "5/5 (all members at 8+)",
+    "safety_above_3": true
+  },
+  "pivotal_lens": "safety",
+  "chairman_summary": "The dart_quic specification corpus PASSES Round 2 with a weighted score of 8.65 (up from 7.95). All five members now score at 8 or above — the council is satisfied. Key improvements: (1) Cross-references are now proper relative links throughout; (2) DATA_FLOW.md condensed significantly; (3) Certificate revocation specified; (4) Future extensions acknowledged. The corpus is ready for implementation. No further rounds required.",
+  "improvement_from_round1": {
+    "coherence": "7 → 8 (+1): relative links, INDEX.md",
+    "capability": "9 → 9 (=): already comprehensive",
+    "safety": "8 → 9 (+1): CRL/OCSP section added",
+    "efficiency": "6 → 8 (+2): tables replace boxes, 146 lines removed",
+    "evolution": "9 → 9 (=): already catalytic"
+  },
+  "remaining_observations": [
+    "TESTING_SPEC.md section headers use spec names parenthetically (cosmetic, acceptable)",
+    "Research/spec duplication remains (intentional for standalone readability)",
+    "HTTP/3 stream type diagram in HTTP3_SPEC.md references QUIC_STREAMS_SPEC.md inline — acceptable in context"
+  ],
+  "final_status": "COUNCIL FULLY SATISFIED — all members ≥ 8"
+}

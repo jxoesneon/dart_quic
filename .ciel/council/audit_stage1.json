@@ -1,0 +1,50 @@
+{
+  "run_id": "council-audit-2026-06-27-001",
+  "scope": "specification_audit",
+  "artifact": "doc/ — 24 specification, research, and architecture documents",
+  "timestamp": "2026-06-27T13:25:00Z",
+  "stage": 1,
+  "members": [
+    {
+      "member": "coherence",
+      "stage": 1,
+      "score": 7,
+      "rationale": "Documents follow a consistent template: Version/Status/RFC Basis/Subsystem header → numbered sections → Acceptance Criteria → Security Considerations → Dependencies → Testing Strategy → References. Cross-references between specs are present but use relative names (e.g., 'QUIC_WIRE_SPEC.md') rather than anchored links. Architecture docs reference spec docs correctly. Research notes use a different format (no Acceptance Criteria section, which is correct for research). Minor issues: (1) research/ has 9 docs listed in handoff but file count shows 9 — DART_ECOSYSTEM_GAP.md added beyond original 8 RFC notes; (2) some specs cite companion docs inconsistently — HTTP3_SPEC.md references 'RFC_9204_NOTES.md research' in Dependencies rather than the formal spec cross-reference; (3) section numbering is uniform but some specs have 12 sections and others have 9-10, creating minor structural variance.",
+      "flags": ["doc_style_mismatch"],
+      "requests": []
+    },
+    {
+      "member": "capability",
+      "stage": 1,
+      "score": 9,
+      "rationale": "The 24-document corpus covers the full protocol stack comprehensively: wire encoding, crypto, streams, recovery, HTTP/3, WebTransport, libp2p, Dart API design, testing plan, security model, and implementation roadmap. No major protocol gaps detected. Each subsystem has both a research note (RFC analysis) and a formal spec (implementation blueprint). Architecture documents bridge from specs to implementation with clear module boundaries and data flow. The PRIOR_ART_ANALYSIS.md surveys 9 implementations across 6 languages — genuine competitive intelligence. DART_ECOSYSTEM_GAP.md correctly identifies the market absence. ROADMAP.md provides a credible 6-phase plan. One gap: no QUIC Version 2 (RFC 9369) coverage, but this is reasonably deferred. Another minor gap: no explicit QUIC Datagram (RFC 9221) standalone spec — it's covered within WEBTRANSPORT_SPEC.md but deserves independent treatment for non-WT use cases.",
+      "flags": ["fills_gap:quic-dart-ecosystem"],
+      "requests": []
+    },
+    {
+      "member": "safety",
+      "stage": 1,
+      "score": 8,
+      "rationale": "SECURITY_SPEC.md is thorough: covers amplification (3x limit), replay (0-RTT marking), DoS (rate limits), timing side-channels (constant-time), randomness (Random.secure() only), logging (no key material). Each spec includes a Security Considerations section. No sensitive data (keys, credentials) present in the documents. No executable code — purely specification documents. The threat model identifies four attacker types with appropriate mitigations. One concern: the security spec doesn't explicitly address resource exhaustion from malicious QPACK dynamic table operations (though QPACK is bounded by SETTINGS). Another minor gap: no explicit guidance on certificate revocation checking (CRL/OCSP), though this may be intentionally deferred. License: MIT (compatible). No untrusted execution, no network calls, no secrets touched.",
+      "flags": [],
+      "requests": [],
+      "veto": false
+    },
+    {
+      "member": "efficiency",
+      "stage": 1,
+      "score": 6,
+      "rationale": "Total corpus: ~7161 lines across 24 documents. Average ~298 lines per document. This is appropriate for archival-quality specifications. However: (1) There is notable content duplication between research notes and formal specs — e.g., varint encoding appears fully in both RFC_9000_NOTES.md and QUIC_WIRE_SPEC.md; (2) The architecture docs partially restate API class hierarchies already in DART_API_SPEC.md; (3) DATA_FLOW.md's step-by-step processing pipeline could be more compact (each step is boxed with ASCII art consuming ~8 lines where 2-3 would suffice); (4) Some tables repeat information available by cross-reference. These are acceptable for a specification corpus (specifications intentionally repeat for standalone readability) but could be trimmed ~15-20% without information loss. L1 metadata summaries would benefit from being more compact.",
+      "flags": ["context_bloat"],
+      "requests": []
+    },
+    {
+      "member": "evolution",
+      "stage": 1,
+      "score": 9,
+      "rationale": "This specification corpus is catalytic for the Dart ecosystem: (1) It's the foundation for the first pure-Dart QUIC stack, enabling HTTP/3 and WebTransport without FFI — a strategic gap in the Flutter/Dart ecosystem; (2) The libp2p adapter spec enables dart_ipfs, which is the stated downstream consumer; (3) The modular architecture enables incremental implementation and progressive capability growth; (4) The interop testing plan ensures compatibility with the broader QUIC ecosystem from day one; (5) The phased roadmap (spec → impl → optimization → libp2p → dart_ipfs) is a generalizable pattern for protocol implementation projects. This teaches Ciel how to scope and plan complex multi-RFC protocol implementations. The cross-referencing pattern between research/spec/architecture layers is reusable for any future protocol project.",
+      "flags": ["catalyst", "ecosystem_bridge", "generalizable"],
+      "requests": []
+    }
+  ]
+}

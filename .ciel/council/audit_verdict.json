@@ -1,0 +1,68 @@
+{
+  "run_id": "council-audit-2026-06-27-001",
+  "scope": "specification_audit",
+  "artifact": "doc/ — 24 specification, research, and architecture documents",
+  "timestamp": "2026-06-27T13:28:00Z",
+  "stage": 3,
+  "verdict": "pass",
+  "weighted_score": 7.95,
+  "votes": {
+    "coherence": 7,
+    "capability": 9,
+    "safety": 8,
+    "efficiency": 6,
+    "evolution": 9
+  },
+  "weights_applied": {
+    "coherence": "0.20 * 7 = 1.40",
+    "capability": "0.20 * 9 = 1.80",
+    "safety": "0.25 * 8 = 2.00",
+    "efficiency": "0.15 * 6 = 0.90",
+    "evolution": "0.20 * 9 = 1.80"
+  },
+  "pass_conditions": {
+    "weighted_score_above_6.5": true,
+    "majority_above_6": "4/5 (coherence=7, capability=9, safety=8, evolution=9)",
+    "safety_above_3": true
+  },
+  "pivotal_lens": "evolution",
+  "chairman_summary": "The dart_quic specification corpus PASSES with a strong weighted score of 7.95. This is a comprehensive, well-structured documentation set that fills a genuine ecosystem gap (pure-Dart QUIC) and positions the project for systematic implementation. Capability and Evolution scored highest (9 each), reflecting the strategic value and completeness of coverage across QUIC, HTTP/3, WebTransport, and libp2p. Safety scored well (8) — the corpus correctly specifies security boundaries without introducing any risk. Efficiency (6) is the lowest but still passing — some duplication exists between research and spec layers, which is an intentional design choice for standalone readability. The pivotal lens is Evolution: this corpus is catalytic for the Dart networking ecosystem.",
+  "findings": [
+    {
+      "severity": "advisory",
+      "finding": "Missing doc/INDEX.md — a navigational index would improve discoverability across 24 documents",
+      "recommendation": "Create a top-level INDEX.md with document descriptions and reading order"
+    },
+    {
+      "severity": "advisory",
+      "finding": "RFC 9221 (QUIC Datagrams) lacks standalone specification — covered only within WEBTRANSPORT_SPEC.md",
+      "recommendation": "Consider a brief QUIC_DATAGRAM_SPEC.md for non-WebTransport datagram use cases"
+    },
+    {
+      "severity": "advisory",
+      "finding": "Cross-references use file names ('QUIC_WIRE_SPEC.md') rather than relative links",
+      "recommendation": "Use relative markdown links for better tooling support: [Wire Spec](../specs/QUIC_WIRE_SPEC.md)"
+    },
+    {
+      "severity": "minor",
+      "finding": "DATA_FLOW.md ASCII art boxes are verbose (~8 lines each where 3-4 would convey the same information)",
+      "recommendation": "Consider condensing processing pipeline steps for readability"
+    },
+    {
+      "severity": "advisory",
+      "finding": "No explicit certificate revocation (CRL/OCSP) guidance in SECURITY_SPEC.md",
+      "recommendation": "Add a section on revocation strategy (even if deferred to implementation phase)"
+    },
+    {
+      "severity": "minor",
+      "finding": "QUIC Version 2 (RFC 9369) not addressed",
+      "recommendation": "Add a brief note in ROADMAP.md acknowledging QUICv2 as a future extension"
+    }
+  ],
+  "action_items": [
+    "Create doc/INDEX.md as a navigational guide",
+    "Add CRL/OCSP section to SECURITY_SPEC.md (can be brief/deferred)",
+    "Add QUICv2 mention to ROADMAP.md future extensions",
+    "Consider standalone QUIC_DATAGRAM_SPEC.md"
+  ]
+}

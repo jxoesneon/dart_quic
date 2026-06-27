@@ -1,0 +1,57 @@
+{
+  "run_id": "council-audit-2026-06-27-002",
+  "scope": "specification_audit_round2",
+  "artifact": "doc/ — 25 documents (24 original + INDEX.md), post-Round-1 fixes applied",
+  "timestamp": "2026-06-27T13:35:00Z",
+  "stage": 1,
+  "changes_since_round1": [
+    "Added doc/INDEX.md with reading order and document tables",
+    "Added §4.3 Certificate Revocation to SECURITY_SPEC.md",
+    "Added §14 Future Extensions to ROADMAP.md",
+    "Condensed DATA_FLOW.md receive/send paths from ASCII boxes to tables (-146 net lines)",
+    "Converted all 49 bare filename references to relative markdown links across 12 files"
+  ],
+  "members": [
+    {
+      "member": "coherence",
+      "stage": 1,
+      "score": 8,
+      "rationale": "Cross-references are now proper relative markdown links throughout — clicking works in any markdown viewer (GitHub, VS Code, etc.). INDEX.md provides the navigational entry point that was missing. All specs still follow the consistent template (Version/Status/RFC Basis → sections → Acceptance Criteria → Security → Dependencies → Testing → References). The structural variance between research/spec/architecture remains (intentional — different document purposes), but is now explicitly explained in INDEX.md's organization. One remaining minor issue: TESTING_SPEC.md section headers reference spec names parenthetically ('### 3.1 Wire Format (QUIC_WIRE_SPEC.md)') without making them links — but these are section titles, not prose references, so this is acceptable. Score raised from 7 to 8.",
+      "flags": [],
+      "requests": []
+    },
+    {
+      "member": "capability",
+      "stage": 1,
+      "score": 9,
+      "rationale": "No capability changes — coverage remains comprehensive. INDEX.md improves accessibility but doesn't add protocol content. Certificate revocation section fills the gap noted in Round 1. Future Extensions table in ROADMAP.md acknowledges QUICv2 and Multipath — good forward visibility. Maintaining 9.",
+      "flags": ["fills_gap:quic-dart-ecosystem"],
+      "requests": []
+    },
+    {
+      "member": "safety",
+      "stage": 1,
+      "score": 9,
+      "rationale": "Certificate revocation section (§4.3) addresses the gap from Round 1 — OCSP stapling, CRL, soft-fail/hard-fail modes are now specified. The default of soft-fail is a reasonable tradeoff for availability (matching browser behavior). Hard-fail is available for high-security deployments. All other safety properties maintained. No new risks introduced. Score raised from 8 to 9 — the revocation section closes the last identified security specification gap.",
+      "flags": [],
+      "requests": [],
+      "veto": false
+    },
+    {
+      "member": "efficiency",
+      "stage": 1,
+      "score": 8,
+      "rationale": "Significant improvement. DATA_FLOW.md reduced by 146 net lines — the verbose 8-line ASCII boxes are now compact 1-row tables conveying identical information. Total corpus went from ~7161 lines to ~7015 lines (2% reduction) while adding INDEX.md (+66 lines) and two new spec sections. The remaining duplication between research/spec layers is now justified: research docs explain WHY (RFC analysis), specs prescribe WHAT (implementation blueprint). The duplicate varint tables serve different audiences — research readers get context, implementors get encoding rules. This is acceptable redundancy for archival specs. Score raised from 6 to 8.",
+      "flags": [],
+      "requests": []
+    },
+    {
+      "member": "evolution",
+      "stage": 1,
+      "score": 9,
+      "rationale": "INDEX.md establishes a documentation-as-code pattern that's reusable for any multi-spec project. The Future Extensions table demonstrates forward-looking planning without scope creep. The relative-link structure enables GitHub wiki-style browsing. Strategic value unchanged — still catalytic for the Dart ecosystem. Maintaining 9.",
+      "flags": ["catalyst", "ecosystem_bridge", "generalizable"],
+      "requests": []
+    }
+  ]
+}
