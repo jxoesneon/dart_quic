@@ -3,6 +3,9 @@
 # IDE local domains
 .windsurf/
 
+# Ciel orchestration metadata
+.ciel/
+
 # Dart / Pub
 .dart_tool/
 .packages
